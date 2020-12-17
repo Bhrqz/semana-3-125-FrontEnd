@@ -1,41 +1,45 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Bienvenido, {{ user.name }}.</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand text-light" href="#">Sprint - 3 - Front-End</a>
+        <span class="text-light">PAGINA PRINCIPAL DE {{ user.name |upper }}</span>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="form-inline my-2 my-lg-0">
-          <button
-            class="btn btn-outline-success my-2 my-sm-0"
-            type="button"
-            @click="logOut"
-          >
-            Salir
-          </button>
-        </form>
+        <div class="d-flex" id="navbarSupportedContent">
+          <form class="form-inline my-2 my-lg-0">
+            <button
+              class="btn btn-outline-light my-2 my-sm-0"
+              type="button"
+              @click="logOut"
+            >
+              Salir
+            </button>
+          </form>
+        </div>
       </div>
     </nav>
 
-    <div class="nombre">
-      {{ user.name }}
+    <div class="container mt-5">
+      <div class="card text-dark bg-info mb-3" style="max-width: 18rem">
+        <div class="card-header">Datos de Usuario</div>
+        <div class="card-body">
+          <h5 class="card-title">Bienvenido</h5>
+          <p class="card-text">Usuario: {{ user.name |capitalize}}</p>
+          <p class="card-text">Email: {{ user.email }}</p>
+        </div>
+      </div>
     </div>
-    <br />
-    <div class="userEmail">
-      {{ user.email }}
-    </div>
-
-    
   </div>
 </template>
 
@@ -46,6 +50,19 @@ export default {
     return {
       user: "",
     };
+  },
+  filters: {
+  capitalize: function (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+  },
+  upper: function (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.toUpperCase()
+  },  
+  
   },
   methods: {
     getUserDetails() {
