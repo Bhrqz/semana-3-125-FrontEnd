@@ -9,7 +9,7 @@ import axios from 'axios'
 //modificar el BASEURL con la direccion de la API nueva
 
 const base = axios.create({
-  baseURL: 'https://glacial-everglades-74306.herokuapp.com'
+  baseURL: 'http://localhost:3000'
 })
 Vue.prototype.$http = base;
 
